@@ -1,10 +1,18 @@
 package pl.database.Entity;
 
-public class Location {
+import javax.persistence.*;
+
+@Entity
+@Table(name = "ISS_LOCATION")
+public class IssLocation {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private double longitude;
     private double latitude;
 
-    public Location() {}
+    public IssLocation() {}
 
     public double getLongitude() {
         return longitude;

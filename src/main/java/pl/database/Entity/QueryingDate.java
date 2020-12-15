@@ -1,14 +1,16 @@
 package pl.database.Entity;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "ASTRONAUT")
-public class Astronaut {
+@Table(name = "QUERYING_DATE")
+public class QueryingDate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String name;
-    private String surname;
+    private LocalDateTime date;
+
+
 }

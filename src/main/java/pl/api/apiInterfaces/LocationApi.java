@@ -1,9 +1,9 @@
 package pl.api.apiInterfaces;
 
-import pl.database.Entity.Location;
+import pl.database.Entity.IssLocation;
 
 import java.io.IOException;
 
 public interface LocationApi {
-    Location getLocation() throws IOException;
+    IssLocation getLocation() throws IOException;
 }

@@ -1,10 +1,10 @@
 package pl.api.apiInterfaces;
 
-import pl.database.Entity.UpcomingRun;
+import pl.database.Entity.UpcomingPass;
 
 import java.util.List;
 
 public interface UpcomingRunsApi {
 
-    List<UpcomingRun> getListOfUpcomingRuns();
+    List<UpcomingPass> getListOfUpcomingRuns();
 }
