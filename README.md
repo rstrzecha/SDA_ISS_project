@@ -11,7 +11,8 @@ Główne funkcje systemu:
 Funkcjonalności: 
 - obliczanie prędkości ISS, 
 - zwracanie listy nadchodzących przebiegów ISS dla określonej lokalizacji, 
-- zwracanie liczby osób przebywających w kosmosie w ramach ISS. 
+- zwracanie liczby osób przebywających w kosmosie w ramach ISS.
+
 Powyższe dane zapisywane do bazy danych. 
 
  ---------------------------------------------------------------------------------
@@ -26,4 +27,5 @@ Functionalities:
 - calculating ISS’ ground speed, 
 - returns a list of upcoming ISS passes for a particular location, 
 - returns the current number of people in space. 
+
 All above data saves to the database. 
