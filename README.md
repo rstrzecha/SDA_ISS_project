@@ -1,5 +1,5 @@
 # SDA_ISS_project
-# Scroll down for English version
+Scroll down for English version
 
 Aplikacja pokazująca informacje o ruchu Międzynarodowej stacji kosmicznej (ISS) 
 
