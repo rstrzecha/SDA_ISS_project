@@ -17,7 +17,9 @@ public class LocationImpl implements APIInterface {
     public String getJson() throws IOException {
             Request request = new Request.Builder()
                     .url(BASE_URL)
-                    .build();    OkHttpClient client = new OkHttpClient();    Call call = client.newCall(request);
+                    .build();
+            OkHttpClient client = new OkHttpClient();
+            Call call = client.newCall(request);
             Response response = call.execute();
 
             return response.body().string();

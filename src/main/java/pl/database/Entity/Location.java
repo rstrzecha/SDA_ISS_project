@@ -14,17 +14,17 @@ public class Location {
 
     public Location() throws IOException {
         String[] jsonArray = jsonProcess();
-        longitude = Double.parseDouble(jsonArray[0]);
-        latitude = Double.parseDouble(jsonArray[1]);
+        longitude = Double.parseDouble(jsonArray[1]);
+        latitude = Double.parseDouble(jsonArray[0]);
         timestamp = Long.parseLong(jsonArray[2]);
     }
 
     private String[] jsonProcess(){
         json = json
-                .replace("{\"iss_position\": {\"longitude\": \"","")
-                .replace("\", \"latitude\":" + " \"", ",")
-                .replace("\"}, \"timestamp\": ",",")
-                .replace(", \"message\": \"success\"}","");
+                .replace("{\"iss_position\": {\"latitude\": \"","")
+                .replace("\", \"longitude\": \"", ",")
+                .replace("\"}, \"message\": \"success\", \"timestamp\": ",",")
+                .replace("}","");
         return json.split(",");
     }
 
