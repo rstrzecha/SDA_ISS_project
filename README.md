@@ -1,7 +1,7 @@
 # SDA_ISS_project
 Scroll down for English version
 
-Aplikacja pokazująca informacje o ruchu Międzynarodowej stacji kosmicznej (ISS) 
+Aplikacja pokazująca informacje o ruchu Międzynarodowej Stacji Kosmicznej (ISS) 
 
 Główne funkcje systemu: 
 - pobieranie danych o ruchu ISS z serwisu sieciowego http://api.open-notify.org, 
