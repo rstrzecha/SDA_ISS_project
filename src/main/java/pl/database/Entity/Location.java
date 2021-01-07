@@ -1,7 +1,7 @@
 package pl.database.Entity;
 
-import pl.api.apiImplements.LocationImpl;
-import pl.api.apiInterface.APIInterface;
+import pl.api.JsonsSplit.LocationSplit;
+import pl.api.apiInterface.SplitJsonInterface;
 
 import java.io.IOException;
 
@@ -9,23 +9,14 @@ public class Location {
     private double longitude;
     private double latitude;
     private long timestamp;
-    APIInterface location = new LocationImpl();
-    private String json = location.getJson();
+    private final int speed = 28_000;
+    SplitJsonInterface jsonSplit = new LocationSplit();
 
     public Location() throws IOException {
-        String[] jsonArray = jsonProcess();
+        String[] jsonArray = jsonSplit.splitJson();
         longitude = Double.parseDouble(jsonArray[1]);
         latitude = Double.parseDouble(jsonArray[0]);
         timestamp = Long.parseLong(jsonArray[2]);
-    }
-
-    private String[] jsonProcess(){
-        json = json
-                .replace("{\"iss_position\": {\"latitude\": \"","")
-                .replace("\", \"longitude\": \"", ",")
-                .replace("\"}, \"message\": \"success\", \"timestamp\": ",",")
-                .replace("}","");
-        return json.split(",");
     }
 
 
@@ -51,5 +42,9 @@ public class Location {
 
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public int getSpeed() {
+        return speed;
     }
 }
