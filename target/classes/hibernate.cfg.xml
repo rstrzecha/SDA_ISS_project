@@ -14,7 +14,11 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.enable_lazy_load_no_trans">true</property>
 
-        <mapping class="pl.sdacademy.database.Entity.Run"/>
+        <mapping class="pl.database.Entity.Astronaut"/>
+        <mapping class="pl.database.Entity.IssLocation"/>
+        <mapping class="pl.database.Entity.UpcomingPass"/>
+        <mapping class="pl.database.Entity.UserLocation"/>
+
 
     </session-factory>
 </hibernate-configuration>
