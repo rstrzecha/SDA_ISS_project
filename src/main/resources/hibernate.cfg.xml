@@ -4,7 +4,7 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost/hibernate?serverTimezone=Europe/Warsaw</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost/iss_logger?serverTimezone=Europe/Warsaw</property>
         <property name="hibernate.connection.username">iss_user</property>
         <property name="hibernate.connection.password">pwd123</property>
         <property name="hibernate.connection.pool_size">10</property>

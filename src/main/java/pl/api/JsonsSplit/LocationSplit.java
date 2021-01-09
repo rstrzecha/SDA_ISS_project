@@ -21,11 +21,10 @@ public class LocationSplit implements SplitJsonInterface {
 
     @Override
     public String[] splitJson() {
-        json = json
-                .replace("{\"iss_position\": {\"latitude\": \"","")
-                .replace("\", \"longitude\": \"", ",")
-                .replace("\"}, \"message\": \"success\", \"timestamp\": ",",")
-                .replace("}","");
+        json = json.replace("{\"message\": \"success\", \"iss_position\": {\"latitude\": \"" ,"");
+        json = json.replace("\", \"longitude\": \"", ",");
+        json = json.replace("\"}, \"timestamp\": ",",");
+        json = json.replace("}","");
         return json.split(",");
     }
 }

@@ -12,10 +12,10 @@ public class Location {
     private final int speed = 28_000;
     SplitJsonInterface jsonSplit = new LocationSplit();
 
-    public Location() throws IOException {
+    public Location(){
         String[] jsonArray = jsonSplit.splitJson();
-        longitude = Double.parseDouble(jsonArray[1]);
         latitude = Double.parseDouble(jsonArray[0]);
+        longitude = Double.parseDouble(jsonArray[1]);
         timestamp = Long.parseLong(jsonArray[2]);
     }
 

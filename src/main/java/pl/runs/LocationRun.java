@@ -13,12 +13,8 @@ public class LocationRun implements Runnable{
     @Override
     public void run() {
         while(true) {
-            Location location = null;
-            try {
-                location = new Location();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            Location location = new Location();
+
             System.out.println("Położenie stacji: ");
             System.out.println("Szerokość geograficzna: " + location.getLatitude());
             System.out.println("Długość geograficzna: " + location.getLongitude());

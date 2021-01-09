@@ -17,22 +17,13 @@ public class UpcomingRunsImpl implements APIInterface {
     static Location location;
 
     static {
-        try {
             location = new Location();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     private static String longitude = String.valueOf(location.getLongitude());
     private static String latitude = String.valueOf(location.getLatitude());
 
     private static String BASE_URL = "http://api.open-notify.org/iss-pass.json?lat="+latitude+"&lon="+longitude;
-
-
-
-    public UpcomingRunsImpl() throws IOException {
-    }
 
     public static String getBaseUrl() {
         return BASE_URL;
@@ -42,7 +33,8 @@ public class UpcomingRunsImpl implements APIInterface {
     public String getJson() throws IOException {
         Request request = new Request.Builder()
                 .url(BASE_URL)
-                .build();    OkHttpClient client = new OkHttpClient();
+                .build();
+                OkHttpClient client = new OkHttpClient();
                 Call call = client.newCall(request);
         Response response = call.execute();
 
