@@ -5,23 +5,21 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import pl.api.apiInterface.APIInterface;
-import pl.database.Entity.Location;
-import pl.database.Entity.UpcomingRun;
+import pl.database.Entity.IssLocation;
 
 import java.io.IOException;
-import java.util.List;
 
 
 public class UpcomingRunsImpl implements APIInterface {
 
-    static Location location;
+    static IssLocation issLocation;
 
     static {
-            location = new Location();
+            issLocation = new IssLocation();
     }
 
-    private static String longitude = String.valueOf(location.getLongitude());
-    private static String latitude = String.valueOf(location.getLatitude());
+    private static String longitude = String.valueOf(issLocation.getLongitude());
+    private static String latitude = String.valueOf(issLocation.getLatitude());
 
     private static String BASE_URL = "http://api.open-notify.org/iss-pass.json?lat="+latitude+"&lon="+longitude;
 

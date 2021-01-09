@@ -1,8 +1,5 @@
-import pl.api.apiImplements.AstronautImpl;
-import pl.api.apiImplements.LocationImpl;
 import pl.api.apiImplements.UpcomingRunsImpl;
 import pl.api.apiInterface.APIInterface;
-import pl.database.Entity.Location;
 import pl.runs.LocationRun;
 
 import java.io.IOException;

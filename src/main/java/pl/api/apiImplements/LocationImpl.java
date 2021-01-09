@@ -5,7 +5,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import pl.api.apiInterface.APIInterface;
-import pl.database.Entity.Location;
 
 import java.io.IOException;
 

@@ -5,14 +5,14 @@ import pl.api.apiInterface.SplitJsonInterface;
 
 import java.io.IOException;
 
-public class Location {
+public class IssLocation {
     private double longitude;
     private double latitude;
     private long timestamp;
     private final int speed = 28_000;
     SplitJsonInterface jsonSplit = new LocationSplit();
 
-    public Location(){
+    public IssLocation(){
         String[] jsonArray = jsonSplit.splitJson();
         latitude = Double.parseDouble(jsonArray[0]);
         longitude = Double.parseDouble(jsonArray[1]);

@@ -5,10 +5,8 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import pl.api.apiInterface.APIInterface;
-import pl.database.Entity.Astronaut;
 
 import java.io.IOException;
-import java.util.List;
 
 public class AstronautImpl implements APIInterface {
 
