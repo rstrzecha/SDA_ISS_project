@@ -2,8 +2,9 @@ package pl.api.apiInterfaces;
 
 import pl.database.Entity.Astronaut;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface AstronautApi {
-    List<Astronaut> getAstronauts();
+    List<Astronaut> getAstronauts() throws IOException;
 }
