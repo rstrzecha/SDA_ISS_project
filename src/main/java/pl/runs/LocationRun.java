@@ -1,5 +1,7 @@
 package pl.runs;
 
+import pl.api.apiImplements.LocationJson;
+import pl.api.apiInterface.APIInterface;
 import pl.database.Entity.IssLocation;
 
 import java.io.IOException;
@@ -9,11 +11,18 @@ public class LocationRun implements Runnable{
     public LocationRun() throws IOException {
     }
 
+    static IssLocation issLocation = null;
+    APIInterface location = new LocationJson();
 
     @Override
     public void run() {
+
         while(true) {
-            IssLocation issLocation = new IssLocation();
+            try {
+                issLocation = new IssLocation(location.getJson());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
             System.out.println("Położenie stacji: ");
             System.out.println("Szerokość geograficzna: " + issLocation.getLatitude());

@@ -9,7 +9,7 @@ import pl.api.apiInterface.APIInterface;
 import java.io.IOException;
 
 
-public class LocationImpl implements APIInterface {
+public class LocationJson implements APIInterface {
 
     private final static String BASE_URL = "http://api.open-notify.org/iss-now.json";
     @Override

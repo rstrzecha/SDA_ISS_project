@@ -19,14 +19,16 @@ public class IssLocation {
     private long timestamp;
     private Double speed;
     private LocalDateTime date;
-    SplitJsonInterface jsonSplit = new LocationSplit();
 
-    public IssLocation(){
-        String[] jsonArray = jsonSplit.splitJson();
+    public IssLocation(String json){
+        SplitJsonInterface jsonSplit = new LocationSplit();
+        String[] jsonArray = jsonSplit.splitJson(json);
         latitude = Double.parseDouble(jsonArray[0]);
         longitude = Double.parseDouble(jsonArray[1]);
         timestamp = Long.parseLong(jsonArray[2]);
     }
+
+    public IssLocation(){}
 
     public Long getId() {
         return id;
