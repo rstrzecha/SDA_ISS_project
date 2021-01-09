@@ -60,7 +60,7 @@ public class IssLocation {
         this.timestamp = timestamp;
     }
 
-    public int getSpeed() {
+    public Double getSpeed() {
         return speed;
     }
 
