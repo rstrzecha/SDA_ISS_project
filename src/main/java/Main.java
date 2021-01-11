@@ -1,4 +1,4 @@
-import pl.api.apiImplements.UpcomingRunsImpl;
+import pl.api.apiImplements.UpcomingRunsJson;
 import pl.api.apiInterface.APIInterface;
 import pl.runs.LocationRun;
 
@@ -10,11 +10,8 @@ public class Main {
         Thread thread = new Thread(() -> locationRun.run());
         thread.start();
 
+        /*APIInterface upcomingRuns = new UpcomingRunsJson();
+        System.out.println(upcomingRuns.getJson());*/
 
-
-        APIInterface upcomingRuns = new UpcomingRunsImpl();
-        System.out.println(upcomingRuns.getJson());
-        /*AstronautImpl astronauts = new AstronautImpl();
-        System.out.println(astronauts.getJson());*/
     }
 }

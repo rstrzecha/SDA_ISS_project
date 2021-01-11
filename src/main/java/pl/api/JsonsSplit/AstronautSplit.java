@@ -16,7 +16,7 @@ public class AstronautSplit implements SplitJsonInterface {
     private String json = astronaut.getJson();
 
     @Override
-    public String[] splitJson() {
+    public String[] splitJson(String json) {
         return new String[0];
     }
 }
