@@ -12,78 +12,73 @@ import java.util.List;
 public class UserLocationDaoImpl implements UserLocationDao {
     @Override
     public void save(UserLocation userLocation) {
-        Session session = HibernateUtils
+        try(Session session = HibernateUtils
                 .getInstance()
                 .getSessionFactory()
-                .getCurrentSession();
-        session.beginTransaction();
+                .getCurrentSession()) {
+            session.beginTransaction();
 
-        session.saveOrUpdate(userLocation);
-        session.getTransaction().commit();
-        session.close();
+            session.saveOrUpdate(userLocation);
+            session.getTransaction().commit();
+        }
     }
 
     @Override
     public UserLocation findById(Long id) {
-        Session session = HibernateUtils
+        UserLocation userLocation = null;
+        try(Session session = HibernateUtils
                 .getInstance()
                 .getSessionFactory()
-                .getCurrentSession();
-        session.beginTransaction();
+                .getCurrentSession()) {
+            session.beginTransaction();
 
-        UserLocation userLocation = null;
-
-        try {
             userLocation = session
                     .createQuery("from UserLocation where id=:id", UserLocation.class)
                     .setParameter("id", id)
                     .getSingleResult();
-        } catch (NoResultException e) {}
 
-        session.getTransaction().commit();
-        session.close();
+            session.getTransaction().commit();
+
+        } catch (NoResultException e) {}
 
         return userLocation;
     }
 
     @Override
     public List<UserLocation> findAll() {
-        Session session = HibernateUtils
+        List<UserLocation> userLocations = new ArrayList<>();
+        try(Session session = HibernateUtils
                 .getInstance()
                 .getSessionFactory()
-                .getCurrentSession();
-        session.beginTransaction();
-
-        List<UserLocation> userLocations = new ArrayList<>();
-
-        try {
+                .getCurrentSession()) {
+            session.beginTransaction();
 
             userLocations = session
                     .createQuery("from UserLocation", UserLocation.class)
                     .list();
 
-        } catch (NoResultException e) {}
+            session.getTransaction().commit();
 
-        session.getTransaction().commit();
-        session.close();
+
+        } catch (NoResultException e) {}
 
         return userLocations;
     }
 
     @Override
     public void deleteById(Long id) {
-        Session session = HibernateUtils
+        try(Session session = HibernateUtils
                 .getInstance()
                 .getSessionFactory()
-                .getCurrentSession();
-        session.beginTransaction();
+                .getCurrentSession()) {
+            session.beginTransaction();
 
-        session
-                .createQuery("delete UserLocation where id=:id")
-                .setParameter("id", id)
-                .executeUpdate();
+            session
+                    .createQuery("delete UserLocation where id=:id")
+                    .setParameter("id", id)
+                    .executeUpdate();
 
-        session.getTransaction().commit();
-        session.close();
+            session.getTransaction().commit();
+        }
     }
 }

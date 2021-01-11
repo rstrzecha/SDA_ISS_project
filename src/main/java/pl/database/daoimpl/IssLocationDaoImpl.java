@@ -13,78 +13,72 @@ public class IssLocationDaoImpl implements IssLocationDao {
 
     @Override
     public void save(IssLocation issLocation) {
-        Session session = HibernateUtils
+        try(Session session = HibernateUtils
                 .getInstance()
                 .getSessionFactory()
-                .getCurrentSession();
-        session.beginTransaction();
+                .getCurrentSession()) {
+            session.beginTransaction();
 
-        session.saveOrUpdate(issLocation);
-        session.getTransaction().commit();
-        session.close();
+            session.saveOrUpdate(issLocation);
+            session.getTransaction().commit();
+        }
     }
 
     @Override
     public IssLocation findById(Long id) {
-        Session session = HibernateUtils
+        IssLocation issLocation = null;
+        try(Session session = HibernateUtils
                 .getInstance()
                 .getSessionFactory()
-                .getCurrentSession();
-        session.beginTransaction();
+                .getCurrentSession()) {
+            session.beginTransaction();
 
-        IssLocation issLocation = null;
-
-        try {
             issLocation = session
                     .createQuery("from IssLocation where id=:id", IssLocation.class)
                     .setParameter("id", id)
                     .getSingleResult();
-        } catch (NoResultException e) {}
 
-        session.getTransaction().commit();
-        session.close();
+            session.getTransaction().commit();
+
+        } catch (NoResultException e) {}
 
         return issLocation;
     }
 
     @Override
     public List<IssLocation> findAll() {
-        Session session = HibernateUtils
+        List<IssLocation> issLocations = new ArrayList<>();
+        try(Session session = HibernateUtils
                 .getInstance()
                 .getSessionFactory()
-                .getCurrentSession();
-        session.beginTransaction();
-
-        List<IssLocation> issLocations = new ArrayList<>();
-
-        try {
+                .getCurrentSession()) {
+            session.beginTransaction();
 
             issLocations = session
                     .createQuery("from IssLocation", IssLocation.class)
                     .list();
 
-        } catch (NoResultException e) {}
+            session.getTransaction().commit();
 
-        session.getTransaction().commit();
-        session.close();
+        } catch (NoResultException e) {}
 
         return issLocations;
     }
 
     @Override
     public void deleteById(Long id) {
-        Session session = HibernateUtils
+        try(Session session = HibernateUtils
                 .getInstance()
                 .getSessionFactory()
-                .getCurrentSession();
-        session.beginTransaction();
+                .getCurrentSession()) {
+            session.beginTransaction();
 
-        session
-                .createQuery("delete IssLocation where id=:id")
-                .setParameter("id", id)
-                .executeUpdate();
+            session
+                    .createQuery("delete IssLocation where id=:id")
+                    .setParameter("id", id)
+                    .executeUpdate();
 
-        session.getTransaction().commit();
-        session.close();
+            session.getTransaction().commit();
+        }
     }
 }

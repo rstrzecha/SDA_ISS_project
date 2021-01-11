@@ -20,7 +20,6 @@ public class AstronautDaoImpl implements AstronautDao {
 
             session.saveOrUpdate(astronaut);
             session.getTransaction().commit();
-            // session.close();
         }
     }
 
@@ -40,7 +39,6 @@ public class AstronautDaoImpl implements AstronautDao {
 
             session.getTransaction().commit();
 
-            //session.close();
         } catch (NoResultException e) {}
 
         return astronaut;
@@ -63,8 +61,6 @@ public class AstronautDaoImpl implements AstronautDao {
 
         } catch (NoResultException e) {}
 
-        //session.close();
-
         return astronauts;
     }
 
@@ -83,6 +79,5 @@ public class AstronautDaoImpl implements AstronautDao {
 
             session.getTransaction().commit();
         }
-        //session.close();
     }
 }

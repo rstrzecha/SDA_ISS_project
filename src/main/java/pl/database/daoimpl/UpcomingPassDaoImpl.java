@@ -13,78 +13,72 @@ public class UpcomingPassDaoImpl implements UpcomingPassDao {
 
     @Override
     public void save(UpcomingPass upcomingPass) {
-        Session session = HibernateUtils
+        try(Session session = HibernateUtils
                 .getInstance()
                 .getSessionFactory()
-                .getCurrentSession();
-        session.beginTransaction();
+                .getCurrentSession()) {
+            session.beginTransaction();
 
-        session.saveOrUpdate(upcomingPass);
-        session.getTransaction().commit();
-        session.close();
+            session.saveOrUpdate(upcomingPass);
+            session.getTransaction().commit();
+        }
     }
 
     @Override
     public UpcomingPass findById(Long id) {
-        Session session = HibernateUtils
+        UpcomingPass upcomingPass = null;
+        try(Session session = HibernateUtils
                 .getInstance()
                 .getSessionFactory()
-                .getCurrentSession();
-        session.beginTransaction();
+                .getCurrentSession()) {
+            session.beginTransaction();
 
-        UpcomingPass upcomingPass = null;
-
-        try {
             upcomingPass = session
                     .createQuery("from UpcomingPass where id=:id", UpcomingPass.class)
                     .setParameter("id", id)
                     .getSingleResult();
-        } catch (NoResultException e) {}
 
-        session.getTransaction().commit();
-        session.close();
+            session.getTransaction().commit();
+
+        } catch (NoResultException e) {}
 
         return upcomingPass;
     }
 
     @Override
     public List<UpcomingPass> findAll() {
-        Session session = HibernateUtils
+        List<UpcomingPass> upcomingPasses = new ArrayList<>();
+        try(Session session = HibernateUtils
                 .getInstance()
                 .getSessionFactory()
-                .getCurrentSession();
-        session.beginTransaction();
-
-        List<UpcomingPass> upcomingPasses = new ArrayList<>();
-
-        try {
+                .getCurrentSession()) {
+            session.beginTransaction();
 
             upcomingPasses = session
                     .createQuery("from UpcomingPass", UpcomingPass.class)
                     .list();
 
-        } catch (NoResultException e) {}
+            session.getTransaction().commit();
 
-        session.getTransaction().commit();
-        session.close();
+        } catch (NoResultException e) {}
 
         return upcomingPasses;
     }
 
     @Override
     public void deleteById(Long id) {
-        Session session = HibernateUtils
+        try(Session session = HibernateUtils
                 .getInstance()
                 .getSessionFactory()
-                .getCurrentSession();
-        session.beginTransaction();
+                .getCurrentSession()) {
+            session.beginTransaction();
 
-        session
-                .createQuery("delete UpcomingPass where id=:id")
-                .setParameter("id", id)
-                .executeUpdate();
+            session
+                    .createQuery("delete UpcomingPass where id=:id")
+                    .setParameter("id", id)
+                    .executeUpdate();
 
-        session.getTransaction().commit();
-        session.close();
+            session.getTransaction().commit();
+        }
     }
 }
