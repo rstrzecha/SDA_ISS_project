@@ -43,4 +43,22 @@ public class UpcomingPass {
     public void setRisetime(LocalDateTime risetime) {
         this.risetime = risetime;
     }
+
+    public UserLocation getUser_location() {
+        return user_location;
+    }
+
+    public void setUser_location(UserLocation user_location) {
+        this.user_location = user_location;
+    }
+
+    @Override
+    public String toString() {
+        return "UpcomingPass{" +
+                "id=" + id +
+                ", duration=" + duration +
+                ", risetime=" + risetime +
+                ", user_location=" + user_location +
+                '}';
+    }
 }

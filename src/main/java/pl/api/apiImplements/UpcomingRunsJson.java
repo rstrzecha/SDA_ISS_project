@@ -6,6 +6,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import pl.api.apiInterface.APIInterface;
 import pl.database.Entity.IssLocation;
+import pl.database.Entity.UserLocation;
 import pl.runs.LocationRun;
 
 import java.io.IOException;
@@ -13,17 +14,29 @@ import java.io.IOException;
 
 public class UpcomingRunsJson implements APIInterface {
 
-    private static IssLocation issLocation = null; //Trzeba pobrać z bazy danych ostatnią lokalizację ISS
+//    private static IssLocation issLocation = null; //Trzeba pobrać z bazy danych ostatnią lokalizację ISS
 
-    private static String longitude = String.valueOf(issLocation.getLongitude());
-    private static String latitude = String.valueOf(issLocation.getLatitude());
+//    private static String longitude = String.valueOf(issLocation.getLongitude());
+//    private static String latitude = String.valueOf(issLocation.getLatitude());
 
-    private static String BASE_URL = "http://api.open-notify.org/iss-pass.json?lat="+latitude+"&lon="+longitude;
+//    private String longitude;
+//    private String latitude;
+
+
+//    private static String BASE_URL = "http://api.open-notify.org/iss-pass.json?lat="+latitude+"&lon="+longitude;
+    private String BASE_URL;
+
 
     public UpcomingRunsJson() throws IOException {
     }
 
-    public static String getBaseUrl() {
+    public UpcomingRunsJson(UserLocation givenLocation) throws IOException {
+        BASE_URL = "http://api.open-notify.org/iss-pass.json?lat="
+                +(givenLocation.getLongitude())
+                +"&lon="+(givenLocation.getLatitude());
+    }
+
+    public String getBASE_URL() {
         return BASE_URL;
     }
 

@@ -42,4 +42,14 @@ public class UserLocation {
     public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
+
+    @Override
+    public String toString() {
+        return "UserLocation{" +
+                "id=" + id +
+                ", longitude=" + longitude +
+                ", latitude=" + latitude +
+
+                '}';
+    }
 }
