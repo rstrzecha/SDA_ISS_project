@@ -19,6 +19,11 @@ public class UserLocation {
     public UserLocation() {
     }
 
+    public UserLocation(double longitude, double latitude) {
+        this.longitude = longitude;
+        this.latitude = latitude;
+    }
+
     public Long getId() {
         return id;
     }
